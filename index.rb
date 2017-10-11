@@ -1,22 +1,16 @@
 require "discordrb"
 require "figaro"
 
-ENV['FIGARO_ENVIRONMENT'] = "#{ENV['RACK_ENV']}" || 'development'
+require_relative "lib/client"
+require_relative "lib/command_manager"
+require_relative "lib/config_loader"
 
-Figaro.application = Figaro::Application.new(environment: ENV['FIGARO_ENVIRONMENT'], path: 'config/application.yml')
+module DqDiscordBot
+    loader = ConfigLoader.new
 
-Figaro.load
+    client = Client.new(loader)
 
-Figaro.require_keys("discord_bot_token", "discord_client_id")
+    command_manager = CommandManager.new(client)
 
-bot = Discordrb::Bot.new token: Figaro.env.discord_bot_token!, 
-                         client_id: Figaro.env.discord_client_id!
-
-puts "This bot's invite URL is #{bot.invite_url}"
-puts "Click on it to invite it to your server."
-
-bot.message(content: "Ping!") do |event|
-    event.respond "Pong!"
+    client.run
 end
-
-bot.run
