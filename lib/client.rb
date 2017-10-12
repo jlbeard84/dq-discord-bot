@@ -12,9 +12,12 @@ module DqDiscordBot
 
             super token: loader_token, 
                   client_id: loader_client_id,
-                  prefix: command_prefix
+                  prefix: command_prefix   
+        end
 
-                  
+        def setup
+            self.include! DqDiscordBot::Commands
+            self.include! DqDiscordBot::Events
         end
 
         def run(async = false)
