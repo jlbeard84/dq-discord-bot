@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jlbeard84/dq-discord-bot.svg?branch=master)](https://travis-ci.org/jlbeard84/dq-discord-bot)
+
 # dq-discord-bot
 Discord bot to simulate a DQ battle.
 
