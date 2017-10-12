@@ -17,3 +17,8 @@ It needs to contain the following keys:
 
 Finally, execute index.rb
     $ bundle exec ruby index.rb
+    
+## Testing
+
+Kind of ugly, but for now (Minitest) tests can be run via the shell with:
+    $ bundle exec ruby -Ilib -e 'ARGV.each { |f| require f }' ./tests/**/test_*.rb
