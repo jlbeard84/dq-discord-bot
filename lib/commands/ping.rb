@@ -4,7 +4,7 @@ module DqDiscordBot
     class Ping
         def setup(client)
             client.message(content: "Ping!") do |event|
-                event.respond "Pong!"
+                event.respond "Hey, #{event.user.name}, Pong!"
             end
         end
     end
