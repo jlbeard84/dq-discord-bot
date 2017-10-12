@@ -17,6 +17,7 @@ module DqDiscordBot
 
         def setup
             self.include! DqDiscordBot::Commands
+            self.include! DqDiscordBot::Events
         end
 
         def run(async = false)

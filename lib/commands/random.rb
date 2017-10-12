@@ -1,7 +1,5 @@
 require "discordrb"
 
-require_relative "../client"
-
 module DqDiscordBot::Commands
     extend Discordrb::Commands::CommandContainer
     
