@@ -27,4 +27,5 @@ Finally, execute index.rb
 ## Testing
 
 Kind of ugly, but for now (Minitest) tests can be run via the shell with:
+
     $ bundle exec ruby -Ilib -e 'ARGV.each { |f| require f }' ./tests/**/test_*.rb
