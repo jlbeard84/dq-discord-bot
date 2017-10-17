@@ -20,7 +20,7 @@ module DqDiscordBot::Events
           end
         end
 
-        event.channel.send_message "Ok, #{event.user.username}... starting the game! Pick a (1) Slime or (2) Dracky"    
+        event.channel.send_message "Ok, #{event.user.username} (#{event.user.id})... starting the game! Pick a (1) Slime or (2) Dracky"    
       end
     end
 end

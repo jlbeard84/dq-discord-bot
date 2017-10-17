@@ -3,6 +3,11 @@
 # dq-discord-bot
 Discord bot to simulate a DQ battle.
 
+## Prerequisites
+
+- Ruby
+- Redis
+
 ## Getting started
 
 First, install bundle:
@@ -19,6 +24,9 @@ It needs to contain the following keys:
 
     discord_bot_token: [your discord bot token]
     discord_client_id: [your discord client id]
+    redis_host: [your redis host ip/hostname]
+    redis_port: [your redis server port]
+    redis_db: [your redis db name for the app]
 
 Finally, execute index.rb
 
