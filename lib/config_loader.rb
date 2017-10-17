@@ -10,7 +10,7 @@ module DqDiscordBot
             
             Figaro.load
             
-            Figaro.require_keys("discord_bot_token", "discord_client_id")
+            Figaro.require_keys("discord_bot_token", "discord_client_id", "redis_host", "redis_port", "redis_db")
         end
     end
 end

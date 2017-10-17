@@ -1,13 +1,12 @@
 require "discordrb"
 
+require_relative "../operations/ping_operation"
+
 module DqDiscordBot::Commands
     extend Discordrb::Commands::CommandContainer
     
     command :ping do |event|
-
-        response_message = "Hey, #{event.user.name}!"
-        response_message += " It took #{Time.now - event.timestamp} seconds to generate this message."
-
-        event.respond response_message
+        operation = DqDiscordBot::Operations::PingOperation.new
+        event.respond operation.run(event.user.name, Time.now, event.timestamp)
     end
 end
