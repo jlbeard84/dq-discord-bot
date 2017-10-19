@@ -30,7 +30,7 @@ It needs to contain the following keys:
 
 Finally, execute index.rb
 
-    $ bundle exec ruby index.rb
+    $ bundle exec ruby bin/index.rb
     
 ## Testing
 
