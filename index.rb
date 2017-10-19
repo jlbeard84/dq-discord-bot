@@ -11,6 +11,9 @@ require_relative "lib/events/game_start"
 require_relative "lib/events/playing_announcer"
 require_relative "lib/events/create_player"
 
+require_relative "lib/monsters/giant_rat"
+require_relative "lib/monsters/slime"
+
 module DqDiscordBot
     loader = ConfigLoader.new
 
