@@ -4,8 +4,8 @@ require "redis"
 require_relative "../entities/player"
 
 module DqDiscordBot::Operations
-  class CreatePlayerOperation
-    def create(id, username)
+  class GetPlayerOperation
+    def get(id, username)
       
       db = Redis.current
 
@@ -15,20 +15,18 @@ module DqDiscordBot::Operations
         new_user = DqDiscordBot::Entities::Player.new
         new_user.id = id
         new_user.name = username
-        new_user.in_battle = false
+        new_user.current_battle = nil
         new_user.xp = 0
 
         db.set(id, Oj.dump(new_user))
-        
-        response_message = "Your player has been created successfully!"
+
+        return new_user
       else 
 
         parsed_user = Oj.load(db_user)
 
-        response_message = "Hey, #{parsed_user.name}, you've already created a player!"
+        return parsed_user
       end
-
-      return response_message
     end
   end
 end
