@@ -9,7 +9,6 @@ require_relative "lib/commands/random"
 require_relative "lib/db/dq_db"
 require_relative "lib/events/game_start"
 require_relative "lib/events/playing_announcer"
-require_relative "lib/events/create_player"
 
 require_relative "lib/monsters/giant_rat"
 require_relative "lib/monsters/slime"

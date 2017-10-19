@@ -1,5 +1,7 @@
 require "discordrb"
 
+require_relative "../managers/game_state_manager"
+
 module DqDiscordBot::Events
     extend Discordrb::EventContainer
 
@@ -7,20 +9,19 @@ module DqDiscordBot::Events
       
       if event.content.upcase.start_with? "!GAME"
 
-        event.user.await(:game_start_response) do |start_event|
-          start_choice = start_event.message.content
-          
-          if start_choice.include? "1"
-            start_event.respond "Starting game with Slime."
-          elsif start_choice.include? "2"
-            start_event.respond "Starting game with Dracky."
-          else 
-            start_event.respond "Invalid choice. Please try again. Pick a (1) Slime or (2) Dracky"
-            false
-          end
+        command_params = ""
+        
+        if event.content.length > 5 
+          command_params = event.content.slice(5, event.content.length - 5)
         end
 
-        event.channel.send_message "Ok, #{event.user.username} (#{event.user.id})... starting the game! Pick a (1) Slime or (2) Dracky"    
+        command_params.strip!
+        
+        manager = DqDiscordBot::Managers::GameStateManager.new
+        
+        result = manager.run(command_params, event.user.id, event.user.username)
+
+        event.channel.send_message result
       end
     end
 end
